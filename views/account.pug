@@ -1,0 +1,65 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv='X-UA-Compatible' content='IE=edge')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        title CS472 MiniBankingApp
+        link(rel='stylesheet' href='./css/styles.css')
+        script(defer='' src='./js/minibankapp.js')
+    body
+        header
+            nav
+                ul#ulNavItems
+                    li
+                        a#hyplnkAppBranding(href='/') CS472:::MiniBankingApp
+            #divHeaderRightContent
+                span(style='float: right;') Welcome, Guest
+        #mainContainer
+            main
+                h1#h1BankAccountForm Bank Account Form
+                form#formNewAccount
+                    fieldset(style='border: 0;')
+                        .form-row
+                            .form-item
+                                label(for='txtAccountNo') Account No
+                            .form-item
+                                input#txtAccountNo.form-ctrl(type='text' name='txtAccountNo' placeholder='01-XXX-XXXX' required='' autofocus='')
+                            .form-item.small-instr-text
+                                span Enter your unique account number.
+                        .form-row
+                            .form-item
+                                label(for='txtCustomerName') Customer Name
+                            .form-item
+                                input#txtCustomerName.form-ctrl(type='text' name='txtCustomerName' placeholder='e.g. John B. Smith' required='')
+                        .form-row
+                            .form-item
+                                label(for='ddlAccountType') Type of Account
+                            .form-item
+                                select#ddlAccountType.form-ctrl-sel(name='ddlAccountType' required='')
+                                    option(value='') [Select Type of Account]
+                                    option(value='Checking') Checking
+                                    option(value='Loan') Loan
+                                    option(value='Savings') Savings
+                        .form-row
+                            input.btn-std-med(type='submit' value='Create New Account')
+                table#tblAccounts
+                    caption List of Customer Accounts
+                    thead
+                        tr
+                            th(scope='col') #
+                            th(scope='col') Account No
+                            th(scope='col') Customer Name
+                            th(scope='col') Type of Account
+                    tbody
+                        each val, index in accountList
+                            tr
+                                td= index + 1
+                                td= val.account_no
+                                td= val.customer_name
+                                td= val.account_type
+                        
+        footer
+            div
+                span CS472-WAP ::: Banking WebApp
+                span(style='float: right;') O. Kalu, MIU ::: © March 2022

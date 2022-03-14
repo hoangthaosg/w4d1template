@@ -1,0 +1,30 @@
+doctype html
+html( lang="en" )
+    head
+        
+        meta( charset='utf-8' )
+        meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+        meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+        title CS472 MiniBankingApp
+        link(href="./css/styles.css", rel="stylesheet")
+        script( defer, src='./js/minibankapp.js' )
+
+    body
+        header 
+            nav 
+                ul#ulNavItems
+                    li 
+                        a#hyplnkAppBranding( href='/') CS472:::MiniBankingApp
+                    li 
+                        a.hyplnkNavItem( href='/account') Account
+            #divHeaderRightContent
+                span(style='float: right;') Welcome, Guest
+        #mainContainer
+            main 
+                h1#h1BankAccountForm Welcome to your Bank
+                img(src='./images/bank.jpg', alt='Bank')
+        footer 
+            div 
+                span CS472-WAP ::: Banking WebApp
+                span(style='float: right;') O. Kalu, MIU ::: &copy; March 2022
+
