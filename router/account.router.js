@@ -1,47 +1,33 @@
 const express = require('express');
 const router = express.Router();
 
-var sql = require("mssql");
+const accountDAO = require('../service/account.srv');
 
-var sqlConfig = {
-    user: 'sa',
-    password: 'Hello123@',
-    server: 'localhost',
-    database: 'master',
-    pool: {
-        max: 10,
-        min: 0,
-        idleTimeoutMillis: 30000
-      },
-    options: { trustServerCertificate: true }
-};
+
+router.get('/reset', async (req, res) => {
+    const rs = await accountDAO.reset();
+    res.send({rs});
+})
 
 router.get('/', async (req, res) => {
-
-    try {
-        await sql.connect(sqlConfig)
-        const result = await sql.query('select * from Account')
-        console.log(result)
-        res.render('account', { accountList: result.recordset });
-    } catch (err) {
-        console.error('err', err);
-        res.send('error db')
-    }
+    const accountList = await accountDAO.getAll();
+    res.render('account', { accountList });
 })
 
 router.post('/', async (req, res) => {
 
-    try {
-        await sql.connect(sqlConfig)
-        const result = await sql.query(`insert into Account(account_no, customer_name, account_type) values 
-        ('${req.body.account_no}','${req.body.customer_name}','${req.body.account_type}')`)
-        console.log(result);
-        //res.redirect(301, "/account?insert=success");
+    const inserted = await accountDAO.insert({
+        accountNo: req.body.account_no,
+        customerName: req.body.customer_name,
+        accountType: req.body.account_type,
+    });
+
+    if (inserted) {
         res.send({result: true})
-    } catch (err) {
-        console.error('err', err);
-        res.send({result: false, error: err});
+    } else {
+        res.send({result: false, error: 'Cannot insert account'});
     }
+    
 })
 
 module.exports = router;

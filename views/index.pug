@@ -1,30 +1,44 @@
-doctype html
-html( lang="en" )
-    head
-        
-        meta( charset='utf-8' )
-        meta( http-equiv='X-UA-Compatible', content='IE=edge' )
-        meta( name='viewport', content='width=device-width, initial-scale=1.0' )
-        title CS472 MiniBankingApp
-        link(href="./css/styles.css", rel="stylesheet")
-        script( defer, src='./js/minibankapp.js' )
-
-    body
-        header 
-            nav 
-                ul#ulNavItems
-                    li 
-                        a#hyplnkAppBranding( href='/') CS472:::MiniBankingApp
-                    li 
-                        a.hyplnkNavItem( href='/account') Account
-            #divHeaderRightContent
-                span(style='float: right;') Welcome, Guest
-        #mainContainer
-            main 
-                h1#h1BankAccountForm Welcome to your Bank
-                img(src='./images/bank.jpg', alt='Bank')
-        footer 
-            div 
-                span CS472-WAP ::: Banking WebApp
-                span(style='float: right;') O. Kalu, MIU ::: &copy; March 2022
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS472 MiniBankingApp</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="./js/minibankapp.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul id="ulNavItems">
+                <li>
+                    <a id="hyplnkAppBranding" href="/">CS472:::MiniBankingApp</a>
+                </li>
+                <li>
+                    <a class="hyplnkNavItem" href="/account">Account</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="divHeaderRightContent">
+            <span style="float: right;">Welcome, Guest</span>
+        </div>
+    </header>
+    <div id="mainContainer">
+        <main>
+            <h1 id="h1BankAccountForm">Welcome to your Bank</h1>
+            <img src="./images/bank.jpg" alt="Bank">
+        </main>
+    </div>
+    <footer>
+        <div>
+            <span>
+                | CS472-WAP ::: Banking WebApp
+            </span>
+            <span style="float: right;"> 
+                | O. Kalu, MIU ::: &copy; March 2022
+            </span>
+        </div>
+    </footer>
+</body>
+</html>
